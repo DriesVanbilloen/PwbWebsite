@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/api/klantendetails")
 public class KlantDetailsController {
+
     private final KlantDetailsService klantenService;
 
     public KlantDetailsController(KlantDetailsService klantenService) {
