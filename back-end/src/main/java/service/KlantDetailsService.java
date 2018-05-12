@@ -16,4 +16,8 @@ public class KlantDetailsService {
     public List<KlantDetails> getAllKlantDetails(){
         return this.klantRepository.findAll();
     }
+
+    public void createNewKlantDetails(KlantDetails klantDetails) {
+        this.klantRepository.saveAndFlush(klantDetails);
+    }
 }
