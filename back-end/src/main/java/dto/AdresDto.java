@@ -1,13 +1,13 @@
-package domain.model;
+package dto;
 
-public class Adres {
+public class AdresDto {
 
     private Long id;
     private String straatNaam, stad, bus;
     private int huisnummer, postcode;
 
 
-    private Adres(Builder builder){
+    private AdresDto(Builder builder){
         this.id = builder.id;
         this.straatNaam = builder.straatNaam;
         this.stad = builder.stad;
@@ -45,8 +45,8 @@ public class Adres {
         private String straatNaam, stad, bus;
         private int huisnummer, postcode;
 
-        public Adres build(){
-            return new Adres(this);
+        public AdresDto build(){
+            return new AdresDto(this);
         }
 
         public Builder withId(Long id) {

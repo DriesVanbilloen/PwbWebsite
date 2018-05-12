@@ -1,8 +1,7 @@
-package domain.db;
+package dto;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class KlantDetailsRepository {
-
+public class KlantDetailsMapper {
 }

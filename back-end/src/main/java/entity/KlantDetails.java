@@ -1,17 +1,24 @@
-package domain.dto;
+package entity;
 
-public class KlantDetailsDto {
+import javax.persistence.*;
 
+
+@Entity
+@Table(name = "klant-details")
+public class KlantDetails {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String naam, voornaam, email;
 
-
-    private AdresDto adres;
+    @OneToOne
+    private Adres adres;
 
     private boolean isVereniging;
     private String rekeningIBAN;
 
-    private KlantDetailsDto(Builder builder){
+    private KlantDetails(Builder builder){
         this.id = builder.id;
         this.naam = builder.naam;
         this.voornaam = builder.voornaam;
@@ -37,7 +44,7 @@ public class KlantDetailsDto {
         return email;
     }
 
-    public AdresDto getAdres() {
+    public Adres getAdres() {
         return adres;
     }
 
@@ -52,12 +59,12 @@ public class KlantDetailsDto {
     public static class Builder {
         private Long id;
         private String naam, voornaam, email;
-        private AdresDto adres;
+        private Adres adres;
         private boolean isVereniging;
         private String rekeningIBAN;
 
-        public KlantDetailsDto build(){
-            return new KlantDetailsDto(this);
+        public KlantDetails build(){
+            return new KlantDetails(this);
         }
 
         public Builder withId(Long id) {
@@ -80,7 +87,7 @@ public class KlantDetailsDto {
             return this;
         }
 
-        public Builder withAdres(AdresDto adres) {
+        public Builder withAdres(Adres adres) {
             this.adres = adres;
             return this;
         }

@@ -1,23 +1,25 @@
-package domain.dto;
+package entity;
 
-public class AdresDto {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "adres")
+public class Adres {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String straatNaam, stad, bus;
     private int huisnummer, postcode;
 
 
-    private AdresDto(Builder builder){
+    private Adres(Builder builder){
         this.id = builder.id;
         this.straatNaam = builder.straatNaam;
         this.stad = builder.stad;
         this.bus = builder.bus;
         this.huisnummer = builder.huisnummer;
         this.postcode = builder.postcode;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getStraatNaam() {
@@ -40,18 +42,17 @@ public class AdresDto {
         return postcode;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public static class Builder{
         private Long id;
         private String straatNaam, stad, bus;
         private int huisnummer, postcode;
 
-        public AdresDto build(){
-            return new AdresDto(this);
-        }
-
-        public Builder withId(Long id) {
-            this.id = id;
-            return this;
+        public Adres build(){
+            return new Adres(this);
         }
 
         public Builder withStraatNaam(String straatNaam) {
@@ -76,6 +77,11 @@ public class AdresDto {
 
         public Builder withPostcode(int postcode) {
             this.postcode = postcode;
+            return this;
+        }
+
+        public Builder withId(Long id) {
+            this.id = id;
             return this;
         }
     }

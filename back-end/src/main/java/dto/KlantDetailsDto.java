@@ -1,14 +1,17 @@
-package domain.model;
+package dto;
 
-public class KlantDetails {
+public class KlantDetailsDto {
 
     private Long id;
     private String naam, voornaam, email;
-    private Adres adres;
+
+
+    private AdresDto adres;
+
     private boolean isVereniging;
     private String rekeningIBAN;
 
-    private KlantDetails(Builder builder){
+    private KlantDetailsDto(Builder builder){
         this.id = builder.id;
         this.naam = builder.naam;
         this.voornaam = builder.voornaam;
@@ -34,7 +37,7 @@ public class KlantDetails {
         return email;
     }
 
-    public Adres getAdres() {
+    public AdresDto getAdres() {
         return adres;
     }
 
@@ -49,12 +52,12 @@ public class KlantDetails {
     public static class Builder {
         private Long id;
         private String naam, voornaam, email;
-        private Adres adres;
+        private AdresDto adres;
         private boolean isVereniging;
         private String rekeningIBAN;
 
-        public KlantDetails build(){
-            return new KlantDetails(this);
+        public KlantDetailsDto build(){
+            return new KlantDetailsDto(this);
         }
 
         public Builder withId(Long id) {
@@ -77,7 +80,7 @@ public class KlantDetails {
             return this;
         }
 
-        public Builder withAdres(Adres adres) {
+        public Builder withAdres(AdresDto adres) {
             this.adres = adres;
             return this;
         }
