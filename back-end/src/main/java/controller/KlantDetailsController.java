@@ -34,8 +34,6 @@ public class KlantDetailsController {
         return getResponseMessage("Geslaagd", HttpStatus.CREATED);
     }
 
-
-
     private ResponseEntity<String> getResponseMessage(String message, HttpStatus status){
         return new ResponseEntity<String>(message, status);
     }

@@ -64,7 +64,17 @@ public class KlantDetails {
         private String rekeningIBAN;
 
         public KlantDetails build(){
+            assertValidObject();
             return new KlantDetails(this);
+        }
+
+        private void assertValidObject(){
+            if(this.naam == null || naam.isEmpty()){
+                throw new IllegalArgumentException("De naam mag niet leeggelaten worden.");
+            }
+            if(voornaam == null || voornaam.isEmpty()){
+                throw new IllegalArgumentException("De voornaam mag niet leeggelaten worden");
+            }
         }
 
         public Builder withId(Long id) {
