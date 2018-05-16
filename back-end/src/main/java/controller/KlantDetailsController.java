@@ -17,11 +17,15 @@ import java.util.List;
 @RequestMapping("/api/klantendetails")
 public class KlantDetailsController {
 
-    @Autowired
-    private KlantDetailsService klantenService;
+    private final KlantDetailsService klantenService;
+
+    private final KlantDetailsMapper klantDetailsMapper;
 
     @Autowired
-    private KlantDetailsMapper klantDetailsMapper;
+    public KlantDetailsController(KlantDetailsService klantenService, KlantDetailsMapper klantDetailsMapper) {
+        this.klantenService = klantenService;
+        this.klantDetailsMapper = klantDetailsMapper;
+    }
 
     @RequestMapping(method = RequestMethod.GET, value="/all")
     public List<KlantDetailsDto> getAlleKlanten(){
