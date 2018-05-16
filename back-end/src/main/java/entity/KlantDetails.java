@@ -11,13 +11,13 @@ public class KlantDetails {
     private Long id;
     private String naam, voornaam, email;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Adres adres;
 
     private boolean isVereniging;
     private String rekeningIBAN;
 
-    private KlantDetails(Builder builder){
+    private KlantDetails(Builder builder) {
         this.id = builder.id;
         this.naam = builder.naam;
         this.voornaam = builder.voornaam;
@@ -25,6 +25,9 @@ public class KlantDetails {
         this.adres = builder.adres;
         this.isVereniging = builder.isVereniging;
         this.rekeningIBAN = builder.rekeningIBAN;
+    }
+
+    private KlantDetails() {
     }
 
     public Long getId() {
@@ -62,16 +65,16 @@ public class KlantDetails {
         private boolean isVereniging;
         private String rekeningIBAN;
 
-        public KlantDetails build(){
+        public KlantDetails build() {
             assertValidObject();
             return new KlantDetails(this);
         }
 
-        private void assertValidObject(){
-            if(this.naam == null || naam.isEmpty()){
+        private void assertValidObject() {
+            if (this.naam == null || naam.isEmpty()) {
                 throw new IllegalArgumentException("De naam mag niet leeggelaten worden.");
             }
-            if(voornaam == null || voornaam.isEmpty()){
+            if (voornaam == null || voornaam.isEmpty()) {
                 throw new IllegalArgumentException("De voornaam mag niet leeggelaten worden");
             }
         }

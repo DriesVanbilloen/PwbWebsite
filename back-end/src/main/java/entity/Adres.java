@@ -12,13 +12,16 @@ public class Adres {
     private int huisnummer, postcode;
 
 
-    private Adres(Builder builder){
+    private Adres(Builder builder) {
         this.id = builder.id;
         this.straatNaam = builder.straatNaam;
         this.stad = builder.stad;
         this.bus = builder.bus;
         this.huisnummer = builder.huisnummer;
         this.postcode = builder.postcode;
+    }
+
+    private Adres() {
     }
 
     public String getStraatNaam() {
@@ -45,12 +48,12 @@ public class Adres {
         return id;
     }
 
-    public static class Builder{
+    public static class Builder {
         private Long id;
         private String straatNaam, stad, bus;
         private int huisnummer, postcode;
 
-        public Adres build(){
+        public Adres build() {
             return new Adres(this);
         }
 
