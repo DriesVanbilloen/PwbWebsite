@@ -3,7 +3,6 @@ package entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "adres")
 public class Adres {
 
     @Id

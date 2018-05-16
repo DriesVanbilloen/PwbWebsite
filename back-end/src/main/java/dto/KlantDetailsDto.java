@@ -21,6 +21,10 @@ public class KlantDetailsDto {
         this.rekeningIBAN = builder.rekeningIBAN;
     }
 
+    private KlantDetailsDto(){
+
+    }
+
     public Long getId() {
         return id;
     }
