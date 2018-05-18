@@ -70,10 +70,10 @@ public class KlantDetails {
 
         private void assertValidObject(){
             if(this.naam == null || naam.isEmpty()){
-                throw new IllegalArgumentException("De naam mag niet leeggelaten worden.");
+                throw new IllegalArgumentException("De naam mag niet leeg gelaten worden.");
             }
-            if(voornaam == null || voornaam.isEmpty()){
-                throw new IllegalArgumentException("De voornaam mag niet leeggelaten worden");
+            if(this.adres == null){
+                throw new IllegalArgumentException("Het adres is verplicht.");
             }
         }
 
