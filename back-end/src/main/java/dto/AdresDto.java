@@ -16,6 +16,10 @@ public class AdresDto {
         this.postcode = builder.postcode;
     }
 
+    private AdresDto(){
+
+    }
+
     public Long getId() {
         return id;
     }

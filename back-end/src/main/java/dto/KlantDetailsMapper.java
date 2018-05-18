@@ -10,8 +10,12 @@ import java.util.List;
 @Component
 public class KlantDetailsMapper {
 
+    private final AdresMapper adresMapper;
+
     @Autowired
-    private AdresMapper adresMapper;
+    public KlantDetailsMapper(AdresMapper adresMapper) {
+        this.adresMapper = adresMapper;
+    }
 
     public KlantDetailsDto convertToDto(KlantDetails details){
         return new KlantDetailsDto.Builder()
