@@ -2,6 +2,7 @@ package entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Reservatie {
@@ -11,10 +12,20 @@ public class Reservatie {
     private Long id;
     private Date date;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<ZaalType> gekozenZalen;
+
     @OneToOne(cascade = CascadeType.ALL)
     private KlantDetails klantDetails;
 
     private Reservatie(Builder builder){
+        this.id = builder.id;
+        this.date = builder.date;
+        this.klantDetails = builder.klantDetails;
+        this.gekozenZalen = builder.gekozenZalen;
+    }
+
+    private Reservatie(){
 
     }
 
@@ -34,8 +45,10 @@ public class Reservatie {
         private Long id;
         private Date date;
         private KlantDetails klantDetails;
+        private List<ZaalType> gekozenZalen;
 
         public Reservatie build(){
+            assertObjectValid();
             return new Reservatie(this);
         }
 
@@ -54,7 +67,12 @@ public class Reservatie {
             return this;
         }
 
-        private void assertObjectValid(){
+        public Builder withGekozenZalen(List<ZaalType> gekozenZalen) {
+            this.gekozenZalen = gekozenZalen;
+            return this;
+        }
+
+        public void assertObjectValid(){
 
         }
     }
