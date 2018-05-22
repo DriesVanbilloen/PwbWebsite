@@ -2,7 +2,8 @@
   <v-navigation-drawer permanent>
     <v-toolbar flat>
       <v-list>
-        <v-list-tile></v-list-tile>
+        <v-list-tile>
+        </v-list-tile>
       </v-list>
     </v-toolbar>
   </v-navigation-drawer>
