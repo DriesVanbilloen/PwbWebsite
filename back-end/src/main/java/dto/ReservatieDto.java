@@ -1,32 +1,26 @@
-package entity;
+package dto;
 
-import javax.persistence.*;
+import entity.KlantDetails;
+import entity.Reservatie;
+import entity.ZaalType;
+
 import java.util.Date;
 import java.util.List;
 
-@Entity
-public class Reservatie {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class ReservatieDto {
     private Long id;
     private Date date;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @Enumerated(EnumType.STRING)
     private List<ZaalType> gekozenZalen;
+    private KlantDetailsDto klantDetailsDto;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private KlantDetails klantDetails;
-
-    private Reservatie(Builder builder){
+    private ReservatieDto(Builder builder){
         this.id = builder.id;
         this.date = builder.date;
-        this.klantDetails = builder.klantDetails;
+        this.klantDetailsDto = builder.klantDetails;
         this.gekozenZalen = builder.gekozenZalen;
     }
 
-    private Reservatie(){
+    private ReservatieDto(){
 
     }
 
@@ -38,8 +32,8 @@ public class Reservatie {
         return date;
     }
 
-    public KlantDetails getKlantDetails() {
-        return klantDetails;
+    public KlantDetailsDto getKlantDetails() {
+        return klantDetailsDto;
     }
 
     public List<ZaalType> getGekozenZalen() {
@@ -49,12 +43,11 @@ public class Reservatie {
     class Builder{
         private Long id;
         private Date date;
-        private KlantDetails klantDetails;
+        private KlantDetailsDto klantDetails;
         private List<ZaalType> gekozenZalen;
 
-        public Reservatie build(){
-            assertObjectValid();
-            return new Reservatie(this);
+        public ReservatieDto build(){
+            return new ReservatieDto(this);
         }
 
         public Builder withId(Long id) {
@@ -67,7 +60,7 @@ public class Reservatie {
             return this;
         }
 
-        public Builder withKlantDetails(KlantDetails klantDetails) {
+        public Builder withKlantDetails(KlantDetailsDto klantDetails) {
             this.klantDetails = klantDetails;
             return this;
         }
@@ -75,10 +68,6 @@ public class Reservatie {
         public Builder withGekozenZalen(List<ZaalType> gekozenZalen) {
             this.gekozenZalen = gekozenZalen;
             return this;
-        }
-
-        public void assertObjectValid(){
-
         }
     }
 }
