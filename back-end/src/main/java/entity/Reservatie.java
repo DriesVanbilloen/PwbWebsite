@@ -12,8 +12,9 @@ public class Reservatie {
     private Long id;
     private Date date;
 
-    @OneToMany(cascade = CascadeType.ALL)
     @Enumerated(EnumType.STRING)
+    @CollectionTable(name ="RoomType", joinColumns = @JoinColumn(name= "id"))
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<ZaalType> gekozenZalen;
 
     @OneToOne(cascade = CascadeType.ALL)
