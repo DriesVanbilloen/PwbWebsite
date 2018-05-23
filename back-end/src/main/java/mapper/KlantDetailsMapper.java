@@ -1,11 +1,13 @@
-package dto;
+package mapper;
 
+import dto.KlantDetailsDto;
 import entity.KlantDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class KlantDetailsMapper {
@@ -30,11 +32,10 @@ public class KlantDetailsMapper {
     }
 
     public List<KlantDetailsDto> convertListToListDto(List<KlantDetails> details){
-        List<KlantDetailsDto> result = new ArrayList<KlantDetailsDto>();
-        for(KlantDetails detail: details){
-            result.add(convertToDto(detail));
-        }
-        return result;
+        return details
+                .stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 
     public KlantDetails convertToEntity(KlantDetailsDto details) {

@@ -1,16 +1,12 @@
 package dto;
 
-import entity.KlantDetails;
-import entity.Reservatie;
-import entity.ZaalType;
-
 import java.util.Date;
 import java.util.List;
 
 public class ReservatieDto {
     private Long id;
     private Date date;
-    private List<ZaalType> gekozenZalen;
+    private List<String> gekozenZalen;
     private KlantDetailsDto klantDetailsDto;
 
     private ReservatieDto(Builder builder){
@@ -36,15 +32,15 @@ public class ReservatieDto {
         return klantDetailsDto;
     }
 
-    public List<ZaalType> getGekozenZalen() {
+    public List<String> getGekozenZalen() {
         return gekozenZalen;
     }
 
-    class Builder{
+    public static class Builder{
         private Long id;
         private Date date;
         private KlantDetailsDto klantDetails;
-        private List<ZaalType> gekozenZalen;
+        private List<String> gekozenZalen;
 
         public ReservatieDto build(){
             return new ReservatieDto(this);
@@ -65,7 +61,7 @@ public class ReservatieDto {
             return this;
         }
 
-        public Builder withGekozenZalen(List<ZaalType> gekozenZalen) {
+        public Builder withGekozenZalen(List<String> gekozenZalen) {
             this.gekozenZalen = gekozenZalen;
             return this;
         }

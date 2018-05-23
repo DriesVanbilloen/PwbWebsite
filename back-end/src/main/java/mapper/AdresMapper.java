@@ -1,5 +1,6 @@
-package dto;
+package mapper;
 
+import dto.AdresDto;
 import entity.Adres;
 import org.springframework.stereotype.Component;
 

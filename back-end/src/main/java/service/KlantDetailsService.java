@@ -12,7 +12,6 @@ public class KlantDetailsService {
 
     private final KlantDetailsRepository klantRepository;
 
-    @Autowired
     public KlantDetailsService(KlantDetailsRepository klantRepository) {
         this.klantRepository = klantRepository;
     }

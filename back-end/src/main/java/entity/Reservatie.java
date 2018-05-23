@@ -12,10 +12,10 @@ public class Reservatie {
     private Long id;
     private Date date;
 
-    @Enumerated(EnumType.STRING)
-    @CollectionTable(name ="RoomType", joinColumns = @JoinColumn(name= "id"))
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<ZaalType> gekozenZalen;
+    @ElementCollection
+    @CollectionTable(name = "gekozen_zalen", joinColumns = @JoinColumn(name = "reservatie_id"))
+    @Column(name = "zaal")
+    private List<String> gekozenZalen;
 
     @OneToOne(cascade = CascadeType.ALL)
     private KlantDetails klantDetails;
@@ -43,15 +43,15 @@ public class Reservatie {
         return klantDetails;
     }
 
-    public List<ZaalType> getGekozenZalen() {
+    public List<String> getZaalType() {
         return gekozenZalen;
     }
 
-    class Builder{
+    public static class Builder{
         private Long id;
         private Date date;
         private KlantDetails klantDetails;
-        private List<ZaalType> gekozenZalen;
+        private List<String> gekozenZalen;
 
         public Reservatie build(){
             assertObjectValid();
@@ -73,7 +73,7 @@ public class Reservatie {
             return this;
         }
 
-        public Builder withGekozenZalen(List<ZaalType> gekozenZalen) {
+        public Builder withGekozenZalen(List<String> gekozenZalen) {
             this.gekozenZalen = gekozenZalen;
             return this;
         }

@@ -1,7 +1,7 @@
 package controller;
 
 import dto.KlantDetailsDto;
-import dto.KlantDetailsMapper;
+import mapper.KlantDetailsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
