@@ -7,6 +7,10 @@ import java.util.List;
 @Entity
 public class Reservatie {
 
+    //TODO einduur moet bepaald worden
+    //TODO aantal personen
+    //TODO beamer receptiezaal
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
