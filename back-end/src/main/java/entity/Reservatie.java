@@ -20,6 +20,10 @@ public class Reservatie {
     @OneToOne(cascade = CascadeType.ALL)
     private KlantDetails klantDetails;
 
+//    @ElementCollection
+//    @CollectionTable(name = "")
+//    private List<String> gekozenDranken;
+
     private Reservatie(Builder builder){
         this.id = builder.id;
         this.date = builder.date;
@@ -78,7 +82,7 @@ public class Reservatie {
             return this;
         }
 
-        public void assertObjectValid(){
+        private void assertObjectValid(){
 
         }
     }

@@ -24,4 +24,13 @@ public class ReservatieService {
     public List<Reservatie> getAlleReservaties(){
         return this.reservatieRepository.findAll();
     }
+
+    public void removeReservatie(Long id){
+        this.reservatieRepository.delete(id);
+
+    }
+
+    public Reservatie findById(Long id) {
+        return this.reservatieRepository.findOne(id);
+    }
 }

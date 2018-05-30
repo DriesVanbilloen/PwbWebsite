@@ -7,12 +7,12 @@ public class ReservatieDto {
     private Long id;
     private Date date;
     private List<String> gekozenZalen;
-    private KlantDetailsDto klantDetailsDto;
+    private KlantDetailsDto klantDetails;
 
     private ReservatieDto(Builder builder){
         this.id = builder.id;
         this.date = builder.date;
-        this.klantDetailsDto = builder.klantDetails;
+        this.klantDetails = builder.klantDetails;
         this.gekozenZalen = builder.gekozenZalen;
     }
 
@@ -29,7 +29,7 @@ public class ReservatieDto {
     }
 
     public KlantDetailsDto getKlantDetails() {
-        return klantDetailsDto;
+        return klantDetails;
     }
 
     public List<String> getGekozenZalen() {
