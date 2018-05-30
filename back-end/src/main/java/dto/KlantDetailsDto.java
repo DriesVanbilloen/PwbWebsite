@@ -1,11 +1,25 @@
 package dto;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.Valid;
+
 public class KlantDetailsDto {
 
     private Long id;
-    private String naam, voornaam, email;
 
+    @NotEmpty(message = "De naam is verplicht")
+    private String naam;
 
+    @NotEmpty(message = "De voornaam is verplicht")
+    private String voornaam;
+
+    @NotEmpty(message = "Het email adres is verplicht")
+    @Email(message = "Het email moet het juist formaat hebben")
+    private String email;
+
+    @Valid
     private AdresDto adres;
 
     private boolean isVereniging;

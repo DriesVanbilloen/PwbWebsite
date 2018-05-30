@@ -40,6 +40,7 @@ public class ReservatieController {
 
     @RequestMapping(method = RequestMethod.DELETE, consumes = "application/json", value = "/remove/{reservatieId}")
     public ResponseEntity<String> deleteReservatie(@PathVariable("reservatieId") Long reservatieId){
+        this.reservatieService.removeReservatie(reservatieId);
         return this.getResponseMessage("Verwijderd" , HttpStatus.OK);
     }
 

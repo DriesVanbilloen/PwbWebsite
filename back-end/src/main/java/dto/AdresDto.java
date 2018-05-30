@@ -1,10 +1,27 @@
 package dto;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class AdresDto {
 
     private Long id;
-    private String straatNaam, stad, bus;
-    private int huisnummer, postcode;
+
+    @NotEmpty(message = "De straatnaam is verplicht")
+    private String straatNaam;
+
+    @NotEmpty(message = "De stad is verplicht")
+    private String stad;
+
+    private String bus;
+
+    @Size(min = 1, message = "Het huisnummer kan niet 0 of negatief zijn.")
+    private int huisnummer;
+
+    @NotNull(message = "De postcode is verplicht")
+    private int postcode;
 
 
     private AdresDto(Builder builder){

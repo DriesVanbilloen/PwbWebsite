@@ -1,12 +1,22 @@
 package dto;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
 public class ReservatieDto {
+
     private Long id;
+
+    @NotNull
+    @Future
     private Date date;
+
     private List<String> gekozenZalen;
+
+    @Valid
     private KlantDetailsDto klantDetails;
 
     private ReservatieDto(Builder builder){

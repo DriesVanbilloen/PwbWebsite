@@ -58,7 +58,6 @@ public class Reservatie {
         private List<String> gekozenZalen;
 
         public Reservatie build(){
-            assertObjectValid();
             return new Reservatie(this);
         }
 
@@ -80,10 +79,6 @@ public class Reservatie {
         public Builder withGekozenZalen(List<String> gekozenZalen) {
             this.gekozenZalen = gekozenZalen;
             return this;
-        }
-
-        private void assertObjectValid(){
-
         }
     }
 }
