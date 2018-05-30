@@ -9,18 +9,18 @@ public class AdresDto {
 
     private Long id;
 
-    @NotEmpty(message = "De straatnaam is verplicht")
+    @NotEmpty(message = "{adres.straat}")
     private String straatNaam;
 
-    @NotEmpty(message = "De stad is verplicht")
+    @NotEmpty(message = "{adres.stad}")
     private String stad;
 
     private String bus;
-    
-    @Min(1)
+
+    @Min(value = 1 , message = "{adres.huisnummer}")
     private int huisnummer;
 
-    @NotNull(message = "De postcode is verplicht")
+    @NotNull(message = "{adres.postcode}")
     private int postcode;
 
 

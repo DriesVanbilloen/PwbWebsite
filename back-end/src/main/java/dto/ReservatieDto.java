@@ -11,7 +11,7 @@ public class ReservatieDto {
     private Long id;
 
     @NotNull
-    @Future
+    @Future(message = "{reservatie.date}")
     private Date date;
 
     private List<String> gekozenZalen;

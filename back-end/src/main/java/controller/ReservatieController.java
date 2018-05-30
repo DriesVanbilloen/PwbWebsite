@@ -3,6 +3,7 @@ package controller;
 import dto.ReservatieDto;
 import entity.Reservatie;
 import mapper.ReservatieMapper;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +18,13 @@ public class ReservatieController {
 
     private final ReservatieService reservatieService;
     private final ReservatieMapper reservatieMapper;
+//    TODO messageSource gebruiken om een message te zoeken in de properties met de taal die van de interceptor komt.
+//    private final MessageSource messageSource;
 
     public ReservatieController(ReservatieService reservatieService, ReservatieMapper reservatieMapper) {
         this.reservatieService = reservatieService;
         this.reservatieMapper = reservatieMapper;
+//        this.messageSource = messageSource;
     }
 
     @RequestMapping(method = RequestMethod.GET , value = "/all")
@@ -36,20 +40,20 @@ public class ReservatieController {
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<String> createReservatie(@RequestBody @Valid ReservatieDto reservatieDto) {
         this.reservatieService.createReservatie(this.reservatieMapper.convertToEntity(reservatieDto));
-        return this.getResponseMessage("Geslaag" , HttpStatus.CREATED);
+        return this.getResponseMessage("De reservatie is aangemaakt." , HttpStatus.CREATED);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, consumes = "application/json", value = "/remove/{reservatieId}")
     public ResponseEntity<String> deleteReservatie(@PathVariable("reservatieId") Long reservatieId){
         this.reservatieService.removeReservatie(reservatieId);
-        return this.getResponseMessage("Verwijderd" , HttpStatus.OK);
+        return this.getResponseMessage("De reservatie is verwijderd" , HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.PUT, consumes = "application/json", value = "/update/{reservatieId}")
     public ResponseEntity<String> updateReservatie(@PathVariable("reservatieId")Long reservatieId, @RequestBody ReservatieDto reservatieDto){
         this.reservatieService.updateReservatieMetId(reservatieId, reservatieMapper.convertToEntity(reservatieDto));
 
-        return this.getResponseMessage("updated" , HttpStatus.OK);
+        return this.getResponseMessage("De reservatie is geupdated" , HttpStatus.OK);
     }
 
     private ResponseEntity<String> getResponseMessage(String message, HttpStatus status){
