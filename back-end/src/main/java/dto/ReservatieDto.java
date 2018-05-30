@@ -10,8 +10,8 @@ public class ReservatieDto {
 
     private Long id;
 
-    @NotNull
-    @Future(message = "{reservatie.date}")
+    @NotNull(message = "reservatie.date.verplicht")
+    @Future(message = "reservatie.date.toekomst")
     private Date date;
 
     private List<String> gekozenZalen;

@@ -9,14 +9,14 @@ public class KlantDetailsDto {
 
     private Long id;
 
-    @NotEmpty(message = "{klantdetails.naam}")
+    @NotEmpty(message = "klantdetails.naam.verplicht")
     private String naam;
 
-    @NotEmpty(message = "{klantdetails.voornaam}")
+    @NotEmpty(message = "klantdetails.voornaam.verplicht")
     private String voornaam;
 
-    @NotEmpty(message = "{klantdetails.email}")
-    @Email(message = "{klantdetails.email.format}")
+    @NotEmpty(message = "klantdetails.email.verplicht")
+    @Email(message = "klantdetails.email.formaat")
     private String email;
 
     @Valid

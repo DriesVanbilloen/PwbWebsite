@@ -18,13 +18,10 @@ public class ReservatieController {
 
     private final ReservatieService reservatieService;
     private final ReservatieMapper reservatieMapper;
-//    TODO messageSource gebruiken om een message te zoeken in de properties met de taal die van de interceptor komt.
-//    private final MessageSource messageSource;
 
     public ReservatieController(ReservatieService reservatieService, ReservatieMapper reservatieMapper) {
         this.reservatieService = reservatieService;
         this.reservatieMapper = reservatieMapper;
-//        this.messageSource = messageSource;
     }
 
     @RequestMapping(method = RequestMethod.GET , value = "/all")
