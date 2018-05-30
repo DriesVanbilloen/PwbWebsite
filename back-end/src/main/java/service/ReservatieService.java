@@ -18,7 +18,7 @@ public class ReservatieService {
 
     @Transactional
     public void createReservatie(Reservatie reservatie){
-        this.reservatieRepository.saveAndFlush(reservatie);
+        this.persistReservatie(reservatie);
     }
 
     public List<Reservatie> getAlleReservaties(){
@@ -27,10 +27,19 @@ public class ReservatieService {
 
     public void removeReservatie(Long id){
         this.reservatieRepository.delete(id);
-
     }
 
     public Reservatie findById(Long id) {
         return this.reservatieRepository.findOne(id);
+    }
+
+    public void updateReservatieMetId(Long reservatieId, Reservatie reservatie) {
+        Reservatie foundReservatie = this.findById(reservatieId);
+        foundReservatie.updateReservatie(reservatie);
+        this.persistReservatie(foundReservatie);
+    }
+
+    private Reservatie persistReservatie(Reservatie reservatie){
+        return this.reservatieRepository.saveAndFlush(reservatie);
     }
 }

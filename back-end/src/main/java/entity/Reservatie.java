@@ -35,6 +35,12 @@ public class Reservatie {
 
     }
 
+    public void updateReservatie(Reservatie reservatie){
+        this.date = reservatie.date;
+        this.gekozenZalen = reservatie.gekozenZalen;
+        this.klantDetails = reservatie.klantDetails;
+    }
+
     public Long getId() {
         return id;
     }

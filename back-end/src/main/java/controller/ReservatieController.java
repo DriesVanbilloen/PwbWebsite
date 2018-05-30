@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import service.ReservatieService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -33,7 +34,7 @@ public class ReservatieController {
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<String> createReservatie(@RequestBody ReservatieDto reservatieDto) {
+    public ResponseEntity<String> createReservatie(@RequestBody @Valid ReservatieDto reservatieDto) {
         this.reservatieService.createReservatie(this.reservatieMapper.convertToEntity(reservatieDto));
         return this.getResponseMessage("Geslaag" , HttpStatus.CREATED);
     }
@@ -42,6 +43,13 @@ public class ReservatieController {
     public ResponseEntity<String> deleteReservatie(@PathVariable("reservatieId") Long reservatieId){
         this.reservatieService.removeReservatie(reservatieId);
         return this.getResponseMessage("Verwijderd" , HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, consumes = "application/json", value = "/update/{reservatieId}")
+    public ResponseEntity<String> updateReservatie(@PathVariable("reservatieId")Long reservatieId, @RequestBody ReservatieDto reservatieDto){
+        this.reservatieService.updateReservatieMetId(reservatieId, reservatieMapper.convertToEntity(reservatieDto));
+
+        return this.getResponseMessage("updated" , HttpStatus.OK);
     }
 
     private ResponseEntity<String> getResponseMessage(String message, HttpStatus status){

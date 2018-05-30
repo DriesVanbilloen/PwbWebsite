@@ -2,8 +2,8 @@ package dto;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 public class AdresDto {
 
@@ -16,8 +16,8 @@ public class AdresDto {
     private String stad;
 
     private String bus;
-
-    @Size(min = 1, message = "Het huisnummer kan niet 0 of negatief zijn.")
+    
+    @Min(1)
     private int huisnummer;
 
     @NotNull(message = "De postcode is verplicht")
