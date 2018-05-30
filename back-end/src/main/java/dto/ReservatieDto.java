@@ -1,18 +1,28 @@
 package dto;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
 public class ReservatieDto {
+
     private Long id;
+
+    @NotNull(message = "reservatie.date.verplicht")
+    @Future(message = "reservatie.date.toekomst")
     private Date date;
+
     private List<String> gekozenZalen;
-    private KlantDetailsDto klantDetailsDto;
+
+    @Valid
+    private KlantDetailsDto klantDetails;
 
     private ReservatieDto(Builder builder){
         this.id = builder.id;
         this.date = builder.date;
-        this.klantDetailsDto = builder.klantDetails;
+        this.klantDetails = builder.klantDetails;
         this.gekozenZalen = builder.gekozenZalen;
     }
 
@@ -29,7 +39,7 @@ public class ReservatieDto {
     }
 
     public KlantDetailsDto getKlantDetails() {
-        return klantDetailsDto;
+        return klantDetails;
     }
 
     public List<String> getGekozenZalen() {

@@ -20,6 +20,10 @@ public class Reservatie {
     @OneToOne(cascade = CascadeType.ALL)
     private KlantDetails klantDetails;
 
+    @ElementCollection
+    @CollectionTable(name = "gekozen_dranken", joinColumns = @JoinColumn(name = "reservatie_id"))
+    private List<String> gekozenDranken;
+
     private Reservatie(Builder builder){
         this.id = builder.id;
         this.date = builder.date;
@@ -29,6 +33,12 @@ public class Reservatie {
 
     private Reservatie(){
 
+    }
+
+    public void updateReservatie(Reservatie reservatie){
+        this.date = reservatie.date;
+        this.gekozenZalen = reservatie.gekozenZalen;
+        this.klantDetails = reservatie.klantDetails;
     }
 
     public Long getId() {
@@ -54,7 +64,6 @@ public class Reservatie {
         private List<String> gekozenZalen;
 
         public Reservatie build(){
-            assertObjectValid();
             return new Reservatie(this);
         }
 
@@ -76,10 +85,6 @@ public class Reservatie {
         public Builder withGekozenZalen(List<String> gekozenZalen) {
             this.gekozenZalen = gekozenZalen;
             return this;
-        }
-
-        public void assertObjectValid(){
-
         }
     }
 }

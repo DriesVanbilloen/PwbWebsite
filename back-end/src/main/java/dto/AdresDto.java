@@ -1,10 +1,27 @@
 package dto;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class AdresDto {
 
     private Long id;
-    private String straatNaam, stad, bus;
-    private int huisnummer, postcode;
+
+    @NotEmpty(message = "adres.straat.empty")
+    private String straatNaam;
+
+    @NotEmpty(message = "adres.stad.empty")
+    private String stad;
+
+    private String bus;
+
+    @Min(value = 1 , message = "adres.huisnummer.empty")
+    private int huisnummer;
+
+    @NotNull(message = "adres.postcode.empty")
+    private int postcode;
 
 
     private AdresDto(Builder builder){
