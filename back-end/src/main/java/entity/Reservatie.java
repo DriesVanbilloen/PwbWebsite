@@ -20,9 +20,9 @@ public class Reservatie {
     @OneToOne(cascade = CascadeType.ALL)
     private KlantDetails klantDetails;
 
-//    @ElementCollection
-//    @CollectionTable(name = "")
-//    private List<String> gekozenDranken;
+    @ElementCollection
+    @CollectionTable(name = "gekozen_dranken", joinColumns = @JoinColumn(name = "reservatie_id"))
+    private List<String> gekozenDranken;
 
     private Reservatie(Builder builder){
         this.id = builder.id;
