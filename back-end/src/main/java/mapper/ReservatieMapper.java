@@ -22,7 +22,16 @@ public class ReservatieMapper {
                 .withDate(reservatie.getDate())
                 .withId(reservatie.getId())
                 .withKlantDetails(klantDetailsMapper.convertToDto(reservatie.getKlantDetails()))
-                .withGekozenZalen(reservatie.getZaalType())
+                .withGekozenZalen(reservatie.getGekozenZalen())
+                .withChampagneGlazen(reservatie.isChampagneGlazen())
+                .withEetGerief(reservatie.isEetGerief())
+                .withGasfriteuse(reservatie.isGasfriteuse())
+                .withKoffiemachine(reservatie.isKoffiemachine())
+                .withAantalPersonen(reservatie.getAantalPersonen())
+                .withBeginuur(reservatie.getBeginuur())
+                .withEinduur(reservatie.getEinduur())
+                .withGekozenDranken(reservatie.getGekozenDranken())
+                .withReceptieBeamer(reservatie.isReceptieBeamer())
                 .build();
     }
 
@@ -32,6 +41,15 @@ public class ReservatieMapper {
                 .withDate(reservatieDto.getDate())
                 .withGekozenZalen(reservatieDto.getGekozenZalen())
                 .withKlantDetails(klantDetailsMapper.convertToEntity(reservatieDto.getKlantDetails()))
+                .withChampagneGlazen(reservatieDto.isChampagneGlazen())
+                .withEetGerief(reservatieDto.isEetGerief())
+                .withGasfriteuse(reservatieDto.isGasfriteuse())
+                .withKoffiemachine(reservatieDto.isKoffiemachine())
+                .withAantalPersonen(reservatieDto.getAantalPersonen())
+                .withBeginuur(reservatieDto.getBeginuur())
+                .withEinduur(reservatieDto.getEinduur())
+                .withGekozenDranken(reservatieDto.getGekozenDranken())
+                .withReceptieBeamer(reservatieDto.isReceptieBeamer())
                 .build();
     }
 
