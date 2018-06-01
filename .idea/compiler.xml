@@ -10,6 +10,7 @@
         <module name="backend" />
         <module name="front-end" />
         <module name="frontend" />
+        <module name="FrontendAngular" />
       </profile>
     </annotationProcessing>
   </component>
